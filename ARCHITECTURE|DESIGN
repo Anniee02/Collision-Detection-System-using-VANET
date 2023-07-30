@@ -1,0 +1,26 @@
+This entire project has been developed using an Arduino Uno Microcontroller board and 4 sensors,
+namely an accelerometer-ADXL335, an impact sensor (YL 99), a GSM Module (SIM 800A), and a
+GPS Sensor (GY 61). All the sensors are attached to the Arduino Board using jumper cables and a
+breadboard. We also use an LED light and an active buzzer that are used as an alarm to notify any
+nearby entities and the passengers themselves when a crash has happened. The connections are
+made similar to the simulation as shown below that we created using the Circuit.io website:
+https://www.circuito.io/app?components=269,11021,11856,117693,316349,975601
+
+How the entire project works is very simple, after the initial setup of all sensors
+and default values, the sensors constantly check for collisions and whether the car is flipped or not
+using the collision switch data and the roll and the pitch from the accelerometer. If the Impact
+Sensor gives a LOW value, it means that the key has been pressed and the system knows that a
+collision has happened. Once the Arduino gets to know that a collision has happened it sends out a
+consequent output and continues to read the data from the accelerometer, namely the roll and pitch
+of the vehicle. If these values pass the set threshold values a consequent output that the car has been
+flipped is also sent out.
+Following that Arduino obtains the geolocation of the crash/vehicle from the
+GPS module, and passes all the relevant information like the Driver details, Vehicle Details, and the
+Geolocation to the GSM Module that broadcasts it to all nearby entities and the next-of-kin contact
+number fed into the system. Once the message is sent out the LED and BUzzer are activated to
+notify all nearby entities and the passengers and to make it easier for help to locate the vehicle in
+some situations.
+In a case where the Impact Sensor gives a false value, the Arduino Board still
+checks on the values obtained from the accelerometer, and if those values show that the car has
+flipped but there was no collision trigger the same procedure of getting the Geolocation and sending
+out the relevant information along with the physical identifies turning on is followed.
